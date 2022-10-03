@@ -109,7 +109,7 @@ func init() {
 }
 
 func myAppProcess(tenantID string) {
-   myHistogram.WithLabelValues("app1", tenantID).Observe(rand.Float64() * 20)
+   myHistogramVec.WithLabelValues("app1", tenantID).Observe(rand.Float64() * 20)
 }
 
 ```
