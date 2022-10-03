@@ -2,9 +2,9 @@
 # Smart Prometheus Client
 
 This is a Go client library for Prometheus to instrument application code. 
-It extends the [official Prometheus client library](https://github.com/prometheus/client_golang) by adding two main features that are very useful when implementing a Prometheus Exporter:
+It extends the [official Prometheus client library](https://github.com/prometheus/client_golang) by adding two main features that ease the implemention of Prometheus exporters:
 
-- [Counters warm-up]((#counters-warm-up))
+- [Counters warm-up](#counters-warm-up)
 - [Smart clean-up of metric vector](#clean-up-of-metrics-vectors)
 
 You will find more detailed description of these two main features [below](#features).
@@ -13,8 +13,13 @@ You will find more detailed description of these two main features [below](#feat
 
 This library reuses the different metrics interfaces from the [official Prometheus client library](https://github.com/prometheus/client_golang) (Counter, Histogram, Summary.. ), and proposes a compatible vector API. This should allow to use both libraries interchangeably in the most common cases.
 
+### Installation
 
-### Basic Example
+```
+go get github.com/goto-opensource/smart-prometheus-client
+```
+
+### Basic Example: 
 
 ```golang
 import ( 
