@@ -73,7 +73,7 @@ func myAppProcess() {
 
 ### Example of Metrics Vector
 
-When using metrics vectors, the type is not the same as the Prometheus standard go client, however the API is the same.
+When using metrics vectors, the type is not the same as the Prometheus standard go client, however the API is a subset of the vector types.
 You can create a interface that will work with both.
 
 ``` go
