@@ -61,7 +61,7 @@ func init() {
          Subsystem: "myapp",
          Name:      "hist",
          Help:      "Help message",
-	 Buckets:   []float64{1.0, 2.0, 10.0},
+         Buckets:   []float64{1.0, 2.0, 10.0},
       },
       WarmUpDuration: 10 * time.Second,
    }
@@ -107,7 +107,7 @@ func init() {
          Subsystem: "myapp",
          Name:      "hist",
          Help:      "Help message",
-	      Buckets:   []float64{1.0, 2.0, 10.0},
+         Buckets:   []float64{1.0, 2.0, 10.0},
       },
       []string{"operation, tenantId"},
    )
