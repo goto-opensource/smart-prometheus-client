@@ -1,11 +1,13 @@
 
 # Smart Prometheus Client
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/prometheus/client_golang.svg)](https://pkg.go.dev/github.com/goto-opensource/smart-prometheus-client)
+
 This is a Go client library for Prometheus to instrument application code. 
 It extends the [official Prometheus client library](https://github.com/prometheus/client_golang) by adding two main features that ease the implemention of Prometheus exporters:
 
-- [Counters warm-up](#counters-warm-up)
-- [Smart clean-up of metric vector](#clean-up-of-metrics-vectors)
+- [Counters warm-up (initialization of Counters/Histograms/Summaries)](#counters-warm-up)
+- [Smart clean-up of metrics vector](#clean-up-of-metrics-vectors)
 
 You will find more detailed description of these two main features [below](#features).
 
@@ -15,7 +17,10 @@ This library reuses the different metrics interfaces from the [official Promethe
 
 ### Installation
 
+You must install this library along with the prometheus golang client:
+
 ```
+go get github.com/prometheus/client_golang
 go get github.com/goto-opensource/smart-prometheus-client
 ```
 
@@ -102,7 +107,7 @@ func init() {
          Subsystem: "myapp",
          Name:      "hist",
          Help:      "Help message",
-	 Buckets:   []float64{1.0, 2.0, 10.0},
+	      Buckets:   []float64{1.0, 2.0, 10.0},
       },
       []string{"operation, tenantId"},
    )
@@ -141,6 +146,12 @@ However, deleting time series may cause inconsistency issues when the same set o
 This library solves this problem of label collision for deleted metrics in vector. Internally it adds and manages an additional label whose value changes when a new life cycle starts.
 
 It is also possible to automatically removes idle metrics from Vector thanks to the `ExpirationDelay` option provided at vector creation. Still the removed set of label values can be safely added again due to the mechanism described earlier. Note that the WarmUp process triggers again in such case, which makes it safe for counters, histograms and summary.
+
+
+## Documentation
+
+- [Go Reference](https://pkg.go.dev/github.com/goto-opensource/smart-prometheus-client)
+
 
 ## Contributing
 
